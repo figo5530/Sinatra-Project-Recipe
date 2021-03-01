@@ -1,0 +1,46 @@
+<style>
+h2 {color :#fff;}
+label {color :#fff;}
+form {width: 60%; margin: 0 auto;}
+</style>
+  <section class="section-form">
+    <div class="row">
+        <h2>Please Sign Up To Create And Check Recipe</h2>
+    </div>
+    <div class="row">
+      <form method="post" action="/signup" class="form">
+        <div class="row">
+            <div class="col span-1-of-3">
+              <label for="username">Username</label>
+            </div>
+            <div class="col span-2-of-3">
+              <input type="text" name="username" id="username" placeholder="Your username" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col span-1-of-3">
+              <label for="email">Email</label>
+            </div>
+            <div class="col span-2-of-3">
+              <input type="email" name="email" id="email" placeholder="Your email" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col span-1-of-3">
+                <label for="password">Password</label>
+            </div>
+            <div class="col span-2-of-3">
+              <input type="password" name="password" id="password" placeholder="Your password" required style="width: 100%; padding: 7px; border-radius: 3px; border: 1px solid #ccc;">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col span-1-of-3">
+                <label>&nbsp;</label>
+            </div>
+            <div class="col span-2-of-3">
+                <input type="submit" value="Submit">
+            </div>
+        </div>
+      </form>
+    </div>
+  </section>
