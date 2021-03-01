@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<html class="no-js" lang="en">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
@@ -10,23 +7,38 @@
     <title>Recipe</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link rel="stylesheet" href="/stylesheets/main.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/grid.css">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/queries.css" />
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,300italic' rel='stylesheet' type='text/css'>
   </head>
   <body>
-    <div class="wrapper">
+    <header style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/images/hero-min.jpg');">
+    <nav>
+      <div class="row">
+          <img src="images/logo-white.png" alt="Omnifood logo" class="logo">
+          <img src="images/logo.png" alt="Omnifood logo" class="logo-black">
+          <ul class="main-nav js--main-nav">
+              <li><a href="#features">Home Page</a></li>
+              <li><a href="#works">All Recipes</a></li>
+              <li><a href="#cities">Our cities</a></li>
+              <li><a href="#plans">Sign up</a></li>
+          </ul>
+          <a class="mobile-nav-icon js--nav-icon"><i class="ion-navicon-round"></i></a>
+      </div>
+    </nav>
+  <%= yield %>
+  </header>
 
-        <%= yield %>
 
-      <footer class="branding">
-        <small>&copy; 2021 <strong>Recipe</strong></small>
-      </footer>
+
+  <footer>
+    <div class="row">
+      <p>This webpage was originally built by Yinghui for the course "Jonas Schmedtmann: Design and Develop a Killer Website Using HTML5 and CSS3".</p>
+      <p>Now refactored to provide html structure and css for Flatiron Phase 2 Sinatra Project. No copyrights &copy; here.</p>
     </div>
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <!--[if lt IE 7]>
-      <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
-      <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
-    <![endif]-->
+  </footer>
   </body>
 </html>
+
