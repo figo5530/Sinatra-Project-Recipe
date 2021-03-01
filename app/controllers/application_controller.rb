@@ -5,9 +5,11 @@ class ApplicationController < Sinatra::Base
   configure do
     set :public_folder, 'public'
     set :views, 'app/views'
-    enbale :sessions
+    enable :sessions
     set :session_secret, "Recipe"
   end
+
+  register Sinatra::Flash
 
   get "/" do
     erb :welcome
