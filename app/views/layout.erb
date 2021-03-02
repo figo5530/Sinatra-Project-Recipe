@@ -20,7 +20,11 @@
           <img src="images/logo-white.png" alt="Omnifood logo" class="logo">
           <img src="images/logo.png" alt="Omnifood logo" class="logo-black">
           <ul class="main-nav js--main-nav">
+          <% if logged_in? %>
               <li><a href="#features">Home Page</a></li>
+          <% else %>
+              <li><a href="/">Home Page</a></li>
+          <% end %>
               <li><a href="#works">All Recipes</a></li>
               <li><a href="#cities">Our cities</a></li>
               <li><a href="#plans">Sign up</a></li>
