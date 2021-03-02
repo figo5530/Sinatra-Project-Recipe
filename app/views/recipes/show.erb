@@ -5,6 +5,9 @@
         position: relative;
         margin-top: 40px;
     }
+    .bt {
+        text-align: center;
+    }
 
 </style>
 <section class="section-testimonials">
@@ -12,20 +15,23 @@
         <h2><%= @recipe.name %></h2>
     </div>
     <div class="row">
-        <div class="col span-1-of-3">
-            <cite>Authored by <%= @recipe.author.username %></cite>
+        <div class="col span-3-of-7">
             <p>
+            <cite>Authored by <%= @recipe.author.username %></cite><br>
             Level: &nbsp&nbsp<%= @recipe.level %><br>
             <br>
             Cooking time: &nbsp&nbsp<%= @recipe.cooking_time %>
             </p>
-        </div>
-        <div class="col span-1-of-3">
             <p><%= @recipe.ingredients %></p>
         </div>
-        <div class="col span-1-of-3">
+        <div class="col span-1-of-7">
+        </div>
+        <div class="col span-3-of-7">
             <p><%= @recipe.steps %></p>
         </div>
     </div>
-    
+    <div class="bt">
+        <a class="btn btn-ghost js--scroll-to-start" href="/recipes/<%=@recipe.id%>/edit">Edit</a>
+        <a class="btn btn-ghost js--scroll-to-start" href="/signup">Delete</a>
+    </div>
 </section>

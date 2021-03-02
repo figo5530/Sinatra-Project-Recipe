@@ -15,7 +15,7 @@ class RecipesController < ApplicationController
         end
     end
 
-    post '/recipes/new' do
+    post '/recipes' do
         if logged_in?
             @recipe = current_user.authored_recipes.build(name: params[:name], ingredients: params[:ingredients], cooking_time: params[:cooking_time], level: params[:level], steps: params[:steps], save_times: 0)
             @recipe.save
@@ -33,4 +33,17 @@ class RecipesController < ApplicationController
             redirect '/login'
         end
     end
+
+    #get edit
+    get '/recipes/:id/edit' do
+        if logged_in?
+            @recipe = Recipe.find_by(id: params[:id])
+            erb :"recipes/edit", :layout => :layout_3
+        else
+            redirect '/login'
+        end
+    end
+    #patch 
+    #delete
+    #save
 end
