@@ -1,17 +1,19 @@
 class UsersController < ApplicationController
     get '/signup' do
         if logged_in?
-            redirect '/recipes'
+            @user = User.find_by(id: session[:user_id])
+            redirect "/#{@user.slug}"
         else
             erb :"/users/signup"
         end
     end
-
+    
     post '/signup' do
         @user = User.create(username: params[:username], email: params[:email], password: params[:password])
         if @user.id
             session[:user_id] = @user.id
-            redirect '/recipes'
+            session[:username] = @user.username
+            redirect "/#{@user.slug}"
         else
             flash[:message] = @user.errors.full_messages
             erb :"/users/signup"
@@ -21,18 +23,19 @@ class UsersController < ApplicationController
     get '/login' do
         erb :"/users/login"
     end
-
+    
     post '/login' do
         @user = User.find_by(username: params[:username])
         if @user && @user.authenticate(params[:password])
             session[:user_id] = @user.id
-            redirect '/recipes'
+            session[:username] = @user.username
+            redirect "/#{@user.slug}"
         else
             flash[:message] = "Invalid Username or Password"
             erb :"/users/login"
         end
     end
-
+    
     get '/logout' do
         if logged_in?
             session.destroy
@@ -42,8 +45,12 @@ class UsersController < ApplicationController
         end
     end
 
-    get '/users/:slug' do
-        @user = User.find_by_slug(params[:slug])
-        erb :"users/show"
+    get '/:slug' do
+        if logged_in?
+            @user = User.find_by_slug(params[:slug])
+            erb :"users/show"
+        else
+            redirect '/login'
+        end
     end
 end

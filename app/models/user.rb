@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
     validates_uniqueness_of :email
 
     def slug
-        username.downcase.gsub("","-")
+        username.downcase.gsub(" ","-")
     end
 
     def self.find_by_slug(slug)
