@@ -3,9 +3,6 @@ h2 {color :#fff;}
 label {color :#fff;}
 form {width: 60%; margin: 0 auto;}
 </style>
-    <% flash[:message] && flash[:message].each do |m| %>
-      <li style="text-align: center; color: #fff;"><%= m %></li>
-    <% end %>
   <section class="section-form">
     <div class="row">
         <h2>Please Sign Up To Create And Check Recipe</h2>
@@ -45,5 +42,9 @@ form {width: 60%; margin: 0 auto;}
             </div>
         </div>
       </form>
+                <label>&nbsp;</label>
+        <% flash[:message] && flash[:message].each do |m| %>
+        <li style="text-align: center; color: #fff;"><%= m %></li>
+        <% end %>
     </div>
   </section>
