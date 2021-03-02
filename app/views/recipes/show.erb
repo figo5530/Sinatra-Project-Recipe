@@ -1,0 +1,31 @@
+<style>
+    p {
+        font-style: italic;
+        line-height: 145%;
+        position: relative;
+        margin-top: 40px;
+    }
+
+</style>
+<section class="section-testimonials">
+    <div class="row">
+        <h2><%= @recipe.name %></h2>
+    </div>
+    <div class="row">
+        <div class="col span-1-of-3">
+            <cite>Authored by <%= @recipe.author.username %></cite>
+            <p>
+            Level: &nbsp&nbsp<%= @recipe.level %><br>
+            <br>
+            Cooking time: &nbsp&nbsp<%= @recipe.cooking_time %>
+            </p>
+        </div>
+        <div class="col span-1-of-3">
+            <p><%= @recipe.ingredients %></p>
+        </div>
+        <div class="col span-1-of-3">
+            <p><%= @recipe.steps %></p>
+        </div>
+    </div>
+    
+</section>
