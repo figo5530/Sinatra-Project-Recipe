@@ -32,4 +32,18 @@ class UsersController < ApplicationController
             erb :"/users/login"
         end
     end
+
+    get '/logout' do
+        if logged_in?
+            session.destroy
+            redirect '/'
+        else
+            redirect '/'
+        end
+    end
+
+    get '/users/:slug' do
+        @user = User.find_by_slug(params[:slug])
+        erb :"users/show"
+    end
 end
