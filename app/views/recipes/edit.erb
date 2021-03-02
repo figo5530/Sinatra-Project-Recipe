@@ -23,7 +23,7 @@ form {width: 60%; margin: 0 auto;}
               <label for="ingredients">Ingredients</label>
             </div>
             <div class="col span-2-of-3">
-              <textarea name="ingredients" id="ingredients" placeholder="<%= @recipe.ingredients%>" value="<%= @recipe.ingredients%>"></textarea>
+              <textarea name="ingredients" id="ingredients" placeholder="<%= @recipe.ingredients%>" value="<%= @recipe.ingredients%>" required></textarea>
             </div>
         </div>
         <div class="row">
@@ -51,7 +51,7 @@ form {width: 60%; margin: 0 auto;}
                 <label for="steps">Cooking Instructions</label>
             </div>
             <div class="col span-2-of-3">
-                <textarea name="steps" id="steps" placeholder="<%= @recipe.steps%>" value="<%= @recipe.steps%>"></textarea>
+                <textarea name="steps" id="steps" placeholder="<%= @recipe.steps%>" value="<%= @recipe.steps%>" required></textarea>
             </div>
         </div>
         <div class="row">

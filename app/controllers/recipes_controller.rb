@@ -43,7 +43,21 @@ class RecipesController < ApplicationController
             redirect '/login'
         end
     end
+    
     #patch 
+    patch '/recipes/:id' do
+        if logged_in?
+            @recipe = Recipe.find_by(id: params[:id])
+            if @recipe && @recipe.author_id == current_user.id
+                @recipe.update(name: params[:name], ingredients: params[:ingredients], cooking_time: params[:cooking_time], level: params[:level], steps: params[:steps])
+                redirect "/recipes/#{@recipe.id}"
+            else
+                redirect '/recipes/index'
+            end
+        else
+            redirect '/login'
+        end
+    end
     #delete
     #save
 end
