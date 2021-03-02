@@ -1,0 +1,70 @@
+<style>
+h2 {color :#fff;}
+label {color :#fff;}
+form {width: 60%; margin: 0 auto;}
+</style>
+  <section class="section-form">
+    <div class="row">
+        <h2>Create your own recipe</h2>
+    </div>
+    <div class="row">
+      <form method="post" action="/recipes/new" class="form">
+        <div class="row">
+            <div class="col span-1-of-3">
+              <label for="name">Name</label>
+            </div>
+            <div class="col span-2-of-3">
+              <input type="text" name="name" id="name" placeholder="Recipe's name" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col span-1-of-3">
+              <label for="ingredients">Ingredients</label>
+            </div>
+            <div class="col span-2-of-3">
+              <input type="text" name="ingredients" id="ingredients" placeholder="Ingredients" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col span-1-of-3">
+                <label for="cooking_time">Cooking Time</label>
+            </div>
+            <div class="col span-2-of-3">
+              <input type="text" name="cooking_time" id="cooking_time" placeholder="Cooking time" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col span-1-of-3">
+                <label for="level">Cooking Level</label>
+            </div>
+            <div class="col span-2-of-3">
+                <select name="level" id="level">
+                    <option value="easy" selected>Easy</option>
+                    <option value="mid-level">Mid-Level</option>
+                    <option value="hard">Hard</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col span-1-of-3">
+                <label for="steps">Cooking Instructions</label>
+            </div>
+            <div class="col span-2-of-3">
+                <textarea name="steps" id="steps" placeholder="Instructions" required></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col span-1-of-3">
+                <label>&nbsp;</label>
+            </div>
+            <div class="col span-2-of-3">
+                <input type="submit" value="Submit">
+            </div>
+        </div>
+      </form>
+                <label>&nbsp;</label>
+        <% flash[:message] && flash[:message].each do |m| %>
+        <li style="text-align: center; color: #fff;"><%= m %></li>
+        <% end %>
+    </div>
+  </section>
