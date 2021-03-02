@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_01_215349) do
+ActiveRecord::Schema.define(version: 2021_03_02_183841) do
+
+  create_table "recipes", force: :cascade do |t|
+    t.string "name"
+    t.string "ingredients"
+    t.string "steps"
+    t.string "level"
+    t.string "cooking_time"
+    t.integer "author_id"
+    t.integer "save_id"
+    t.integer "save_times"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
