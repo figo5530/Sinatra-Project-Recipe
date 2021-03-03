@@ -26,7 +26,6 @@
         <h2>My Recipes</h2>
     </div>
     <% @authored_recipes.each.with_index do |ar, i| %>
-   
         <% if i%3 == 0 %>
             <div class="row">
         <% end %>
@@ -41,9 +40,31 @@
                 </p>
             </a>
         </div>
-        <% if i%3 == 2 %>
+        <% if i%3 == 2 || i == @authored_recipes.length-1 %>
             </div>
         <% end %>
     <% end %>
 
+    <div class="row">
+        <h2>Saved Recipes</h2>
+    </div>
+    <% @saved_recipes.each.with_index do |sr, i| %>
+        <% if i%3 == 0 %>
+            <div class="row">
+        <% end %>
+        <div class="col span-1-of-3">
+            <a href="/recipes/<%= sr.id %>">
+                <h3><cite><%= sr.name %></cite></h3>
+                <p>
+                Level: <%= sr.level %><br>
+                Cooking time: <%= sr.cooking_time %><br>
+                Ingredients: <%= sr.ingredients %><br>
+                Saved: <%= sr.save_times %>
+                </p>
+            </a>
+        </div>
+        <% if i%3 == 2 %>
+            </div>
+        <% end %>
+    <% end %>
 </section>

@@ -2,6 +2,7 @@ class RecipesController < ApplicationController
     get '/recipes/index' do
         if logged_in?
             @authored_recipes = current_user.authored_recipes
+            @saved_recipes = current_user.saved_recipes
             erb :"/recipes/index", :layout => :layout_1
         else
             redirect '/login'
