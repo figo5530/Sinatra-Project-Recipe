@@ -30,8 +30,11 @@
             <p><%= @recipe.steps %></p>
         </div>
     </div>
+    <form method="POST" action="/recipes/<%= @recipe.id %>/delete">
+    <input type="hidden" id="hidden" name="_method" value="delete">
     <div class="bt">
         <a class="btn btn-ghost js--scroll-to-start" href="/recipes/<%=@recipe.id%>/edit">Edit</a>
-        <a class="btn btn-ghost js--scroll-to-start" href="/signup">Delete</a>
+        <input type="submit" class="btn btn-ghost js--scroll-to-start" value="Delete">
     </div>
+    </form>
 </section>

@@ -2,7 +2,7 @@ class UsersController < ApplicationController
     get '/signup' do
         if logged_in?
             @user = User.find_by(id: session[:user_id])
-            redirect "/#{@user.slug}"
+            redirect "/users/#{@user.slug}"
         else
             erb :"/users/signup"
         end
@@ -13,15 +13,20 @@ class UsersController < ApplicationController
         if @user.id
             session[:user_id] = @user.id
             session[:username] = @user.username
-            redirect "/#{@user.slug}"
+            redirect "/users/#{@user.slug}"
         else
             flash[:message] = @user.errors.full_messages
-            erb :"/users/signup"
+            redirect '/signup'
         end
     end
     
     get '/login' do
-        erb :"/users/login"
+        if logged_in?
+            @user = User.find_by(id: session[:user_id])
+            redirect "/users/#{@user.slug}"
+        else
+            erb :"/users/login"
+        end
     end
     
     post '/login' do
@@ -29,10 +34,10 @@ class UsersController < ApplicationController
         if @user && @user.authenticate(params[:password])
             session[:user_id] = @user.id
             session[:username] = @user.username
-            redirect "/#{@user.slug}"
+            redirect "/users/#{@user.slug}"
         else
             flash[:message] = "Invalid Username or Password"
-            erb :"/users/login"
+            redirect '/login'
         end
     end
     
@@ -45,10 +50,10 @@ class UsersController < ApplicationController
         end
     end
 
-    get '/:slug' do
+    get '/users/:slug' do
         if logged_in?
             @user = User.find_by_slug(params[:slug])
-            erb :"users/show"
+            erb :"users/show", :layout => :layout_2
         else
             redirect '/login'
         end
