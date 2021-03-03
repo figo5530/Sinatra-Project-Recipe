@@ -78,5 +78,20 @@ class RecipesController < ApplicationController
             redirect '/login'
         end
     end
+
     #save
+    post '/recipes/:id/save' do
+        if logged_in?
+            @recipe = Recipe.find_by(id: params[:id])
+            if @recipe && !current_user.saved_recipes.include?(@recipe)
+                current_user.saved_recipes << @recipe
+                @recipe.save_times += 1
+                @recipe.save
+            else
+                flash[:message] = "Recipe doesn't exist or has been saved"
+            end
+        else
+            redirect '/login'
+        end
+    end
 end
