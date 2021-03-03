@@ -89,7 +89,7 @@ class RecipesController < ApplicationController
                 @recipe.save_times += 1
                 @recipe.save
             else
-                flash[:message] = "Recipe doesn't exist or has been saved"
+                flash.now[:alert] = "Recipe doesn't exist or has been saved"
             end
         else
             redirect '/login'
