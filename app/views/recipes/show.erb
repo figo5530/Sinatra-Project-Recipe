@@ -32,9 +32,11 @@
     </div>
     <form method="POST" action="/recipes/<%= @recipe.id %>/delete">
     <input type="hidden" id="hidden" name="_method" value="delete">
+    <% if @recipe.author_id == current_user.id %>
     <div class="bt">
         <a class="btn btn-ghost js--scroll-to-start" href="/recipes/<%=@recipe.id%>/edit">Edit</a>
         <input type="submit" class="btn btn-ghost js--scroll-to-start" value="Delete">
     </div>
+    <% end %>
     </form>
 </section>

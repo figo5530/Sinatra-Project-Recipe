@@ -39,7 +39,11 @@ class RecipesController < ApplicationController
     get '/recipes/:id/edit' do
         if logged_in?
             @recipe = Recipe.find_by(id: params[:id])
-            erb :"recipes/edit", :layout => :layout_3
+            if @recipe.author_id == current_user.id
+                erb :"recipes/edit", :layout => :layout_3
+            else
+                redirect '/recipes/index'
+            end
         else
             redirect '/login'
         end
