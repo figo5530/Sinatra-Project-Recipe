@@ -104,6 +104,7 @@ class RecipesController < ApplicationController
                 current_user.saved_recipes << @recipe
                 @recipe.save_times += 1
                 @recipe.save
+                redirect "/recipes/index"
             else
                 flash.now[:alert] = "Recipe doesn't exist or has been saved"
             end
