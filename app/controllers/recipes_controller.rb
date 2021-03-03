@@ -9,6 +9,22 @@ class RecipesController < ApplicationController
         end
     end
 
+    get '/recipes/plaza' do
+        if logged_in?
+            @plaza_recipes = []
+            popular_recipe = Recipe.all.sort_by{|r| -r.save_times}.first
+            # random_recipe = Recipe.find_by(author_id: Random.rand(User.all.size-1)) if user deletes one of recipes it could be nil
+            random_recipe = Recipe.where.not(id: nil).sample
+            another_random_recipe = Recipe.where.not(id: nil).sample
+            @plaza_recipes << popular_recipe
+            @plaza_recipes << random_recipe
+            @plaza_recipes << another_random_recipe
+            erb :"/recipes/plaza", :layout => :layout_1
+        else
+            redirect '/login'
+        end
+    end
+
     get '/recipes/new' do
         if logged_in?
             erb :"/recipes/new", :layout => :layout_2
