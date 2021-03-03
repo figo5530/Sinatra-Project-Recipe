@@ -247,6 +247,7 @@ header {
 
 .section-testimonials {   
     background-size: cover;
+    background-color: #333;
     color: #fff;
     background-attachment: fixed;
 }
