@@ -22,14 +22,13 @@
           <ul class="main-nav js--main-nav">
           <% if logged_in? %>
               <li><a href="/users/<%=current_user.slug%>">Home Page</a></li>
-              <li><a href="#works">All Recipes</a></li>
+              <li><a href="/recipes/index">My Recipes</a></li>
               <li><a href="/logout">Log Out</a></li>
           <% else %>
               <li><a href="/">Home Page</a></li>
               <li><a href="/login">Log In</a></li>
           <% end %>
               <li><a href="#works">All Recipes</a></li>
-              <li><a href="#cities">Our cities</a></li>
           </ul>
           <a class="mobile-nav-icon js--nav-icon"><i class="ion-navicon-round"></i></a>
       </div>
