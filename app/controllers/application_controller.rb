@@ -12,7 +12,11 @@ class ApplicationController < Sinatra::Base
   register Sinatra::Flash
 
   get "/" do
-    erb :welcome
+    if logged_in?
+      redirect "/users/#{current_user.slug}"
+    else
+      erb :welcome
+    end
   end
 
   helpers do
