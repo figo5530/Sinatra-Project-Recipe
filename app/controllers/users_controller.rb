@@ -51,11 +51,8 @@ class UsersController < ApplicationController
     end
 
     get '/users/:slug' do
-        if logged_in?
-            @user = User.find_by_slug(params[:slug])
-            erb :"users/show", :layout => :layout_2
-        else
-            redirect '/login'
-        end
+        redirect_if_not_logged_in
+        @user = User.find_by_slug(params[:slug])
+        erb :"users/show", :layout => :layout_2
     end
 end
