@@ -78,4 +78,12 @@ class RecipesController < ApplicationController
             flash.now[:alert] = "Recipe doesn't exist or has been saved"
         end
     end
+
+    get '/userindex/:slug' do
+        redirect_if_not_logged_in
+        u = User.find_by_slug(params[:slug])
+        @authored_recipes = u.authored_recipes
+        @saved_recipes = u.saved_recipes
+        erb :"/recipes/index", :layout => :layout_1
+    end
 end
