@@ -38,5 +38,22 @@ class ApplicationController < Sinatra::Base
     def redirect_if_not_logged_in
       redirect '/login' unless logged_in?
     end
+
+    def save_toggle(recipe) #works but kinda slow
+      if recipe
+        if current_user.saved_recipes.include?(recipe)
+          current_user.saved_recipes.delete(recipe)
+          @recipe.save_times -= 1
+        else
+          current_user.saved_recipes << recipe
+          @recipe.save_times += 1
+        end
+        @recipe.save
+        redirect "/recipes/index"
+      else
+        flash.now[:alert] = "Recipe doesn't exist"
+      end
+    end
+
   end
 end

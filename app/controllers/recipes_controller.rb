@@ -69,28 +69,14 @@ class RecipesController < ApplicationController
     post '/recipes/:id/save' do
         redirect_if_not_logged_in
         @recipe = Recipe.find_by(id: params[:id])
-        if @recipe && !current_user.saved_recipes.include?(@recipe)
-            current_user.saved_recipes << @recipe
-            @recipe.save_times += 1
-            @recipe.save
-            redirect "/recipes/index"
-        else
-            flash.now[:alert] = "Recipe doesn't exist or has been saved"
-        end
+        save_toggle(@recipe)
     end
 
     #unsave
     post '/recipes/:id/unsave' do
         redirect_if_not_logged_in
         @recipe = Recipe.find_by(id: params[:id])
-        if @recipe && current_user.saved_recipes.include?(@recipe)
-            current_user.saved_recipes.delete(@recipe)
-            @recipe.save_times -= 1
-            @recipe.save
-            redirect "/recipes/index"
-        else
-            flash.now[:alert] = "Recipe doesn't exist or has been unsaved"
-        end
+        save_toggle(@recipe)
     end
 
     get '/userindex/:slug' do
