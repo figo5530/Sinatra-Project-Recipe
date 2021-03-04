@@ -34,5 +34,9 @@ class ApplicationController < Sinatra::Base
       @plaza_recipes = Recipe.where.not(id: nil).sample(2)
       @plaza_recipes.unshift(popular_recipe)
     end
+
+    def redirect_if_not_logged_in
+      redirect '/login' unless logged_in?
+    end
   end
 end
